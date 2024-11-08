@@ -30,7 +30,7 @@ router.post('/products', validateProduct, async(req,res)=>{
     try{
         let {name,img,price,desc}=req.body;
         await Product.create({name,img,price,desc});
-        res.redirect('products');
+        res.redirect('/products');
     }catch(e){
         res.status(500).render('error',{err:e.message});
     }
@@ -83,6 +83,7 @@ router.delete('/products/:id', async(req,res)=>{
         
         await Product.findByIdAndDelete(id);
         // // is middleware ki vajah se hi humara behind the scene vala middleware chal paa raha h
+
         res.redirect('/products');
     }catch(e){
         res.status(500).render('error',{err:e.message});

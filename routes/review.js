@@ -20,15 +20,11 @@ router.post('/products/:id/review', validateReview ,async(req,res)=>{
         res.redirect(`/products/${id}`);
     }
     catch(e){
-        // console.log(e.message)
+        console.log(e.message);
         res.status(500).render('error',{err:e.message});
     }
 
 })
-
-
-
-
 
 
 module.exports=router;

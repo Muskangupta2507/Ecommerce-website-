@@ -14,10 +14,9 @@ const validateProduct=(req,res,next)=>{
 
 const validateReview=(req,res,next)=>{
     const {rating,comment}=req.body;
-    const{error}= productschema.validate({rating,comment}) // gives 2 things error, value we dont need value here
+    const{error}= reviewschema.validate({rating,comment}) // gives 2 things error, value we dont need value here
     if(error){
-        const msg = error.details.map((err)=>err.message).join(',');
-        return res.render('error' , {err:msg});
+        return res.render('error' , {err:error});
     }
     next();
 }
